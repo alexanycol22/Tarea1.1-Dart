@@ -31,3 +31,4 @@ double calcularValorTotal(Map<int, Map<String, dynamic>> inventario) {
   });
   return total;
 }
+
