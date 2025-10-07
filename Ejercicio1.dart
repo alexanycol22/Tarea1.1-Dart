@@ -1,16 +1,17 @@
 import 'Empleado.dart';
-
 void main() {
-  var empleados = [
-    Empleado('Juan', 101, 50000.0),
-    Empleado('Ana', 102, 60000.0),
+  final empleados = [
+    Empleado(nombre: 'Juan', id: 101, salario: 50000.0),
+    Empleado(nombre: 'Ana', id: 102, salario: 60000.0),
   ];
 
   print('Salarios antes del aumento:');
-  for (var e in empleados) print(e);
+  for (final e in empleados) print(e);
 
-  aumentarSalario(empleados, porcentaje: 10.0);
+  for (final e in empleados) {
+    e.aumentarSalario(10);
+  }
 
-  print('\nSalarios despues del aumento:');
-  for (var e in empleados) print(e);
+  print('\nSalarios después del aumento:');
+  for (final e in empleados) print(e);
 }

@@ -1,17 +1,28 @@
 class Empleado {
-  String nombre;
-  int id;
-  double salario;
+  final String nombre;
+  final int id;
+  double _salario;
 
-  Empleado(this.nombre, this.id, this.salario);
+  Empleado({
+    required this.nombre,
+    required this.id,
+    required double salario,
+  }) : _salario = salario;
+
+  double get salario => _salario;
+
+  set salario(double nuevoSalario) {
+    if (nuevoSalario < 0) throw Exception('El salario no puede ser negativo');
+    _salario = nuevoSalario;
+  }
+
+  void aumentarSalario(double porcentaje) {
+    if (porcentaje <= 0) throw Exception('Porcentaje inválido');
+    _salario += _salario * (porcentaje / 100);
+  }
 
   @override
   String toString() =>
-      '- Empleado: $nombre, ID: $id, Salario: ${salario.toStringAsFixed(1)}';
+      '- Empleado: $nombre, ID: $id, Salario: ${_salario.toStringAsFixed(1)}';
 }
 
-void aumentarSalario(List<Empleado> empleados, {required double porcentaje}) {
-  for (var e in empleados) {
-    e.salario += e.salario * (porcentaje / 100);
-  }
-}
